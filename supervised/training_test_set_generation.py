@@ -1,8 +1,15 @@
 import random
 import datetime
+from decimal import Decimal
+import sys
 
 
 class TrainAndTestSetGenerator:
+
+    _INPUT_FILE_LOCATION = 0
+    _SEED = 1
+    _TRAIN_DATA_PERCENTAGE = 2
+    _OUTPUT_FILE_LOCATION = 3
 
     _DEFAULT_TRAINING_DATA_PERCENTAGE = 0.33
     _MIN_SEED = 0
@@ -18,16 +25,21 @@ class TrainAndTestSetGenerator:
     _FIRST = 0
     _NEXT = 1
 
-    def __init__(self, input_file_location, seed=None, train_data_percentage=None, output_file_location=None):
-        self._input_file_location = input_file_location
-        self._train_data_percentage = train_data_percentage if train_data_percentage is not None \
+    def __init__(self, parameters):
+        """assign commandline args, initialize object
+        :type parameters: list(string)
+        """
+        self._input_file_location = parameters[self._INPUT_FILE_LOCATION]
+        self._train_data_percentage = Decimal(parameters[self._TRAIN_DATA_PERCENTAGE]) \
+            if parameters[self._TRAIN_DATA_PERCENTAGE] is not None \
             else self._DEFAULT_TRAINING_DATA_PERCENTAGE
-        self._seed = seed if seed is not None \
+        self._seed = int(parameters[self._SEED]) if parameters[self._SEED] is not None \
             else random.randint(self._MIN_SEED, self._MAX_SEED)
-        self._output_location = output_file_location if output_file_location is not None \
+        self._output_location = parameters[self._OUTPUT_FILE_LOCATION] \
+            if parameters[self._OUTPUT_FILE_LOCATION] is not None \
             else self._DATAFILE_FOLDER
-        self.train_file = ""
-        self.test_file = ""
+        self.train_file = None
+        self.test_file = None
 
     def generate_train_test_sets(self):
         """generate a training set and a test set, using and storing the seed and timestamp in the file names"""
@@ -102,3 +114,12 @@ class TrainAndTestSetGenerator:
                 else:
                     with open(self.test_file, "a") as test_set:
                         test_set.write(data_row)
+
+
+if __name__ == "__main__":
+    program_args = [None, None, None, None]
+    args = sys.argv[1:]
+    for index, arg in enumerate(args):
+        program_args[index] = arg
+    train_test_generator = TrainAndTestSetGenerator(program_args)
+    train_test_generator.generate_train_test_sets()
