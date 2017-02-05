@@ -5,6 +5,7 @@ Supervised machine learning:
 			training_test_set_generation.py
 			
 	A module that divides a csv dataset into a training and a test set for use in supervised machine learning.
+	Note: does NOT balance training/testing data sets due to assignment requirements
 
 	args (in order):
 		input file location (relative to the module)
