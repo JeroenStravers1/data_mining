@@ -1,2 +1,3 @@
 .idea
-supervised/generated_sets/*
+supervised/generated_sets/*.csv
+supervised/classification_output/*.txt

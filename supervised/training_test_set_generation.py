@@ -26,7 +26,7 @@ class TrainAndTestSetGenerator:
     _NEXT = 1
 
     def __init__(self, parameters):
-        """assign commandline args, initialize object
+        """assign commandline args [INPUTFILE, PERCENTAGE TRAINDATA, SEED, OUTPUTFILE], initialize object
         :type parameters: list(string)
         """
         self._input_file_location = parameters[self._INPUT_FILE_LOCATION]

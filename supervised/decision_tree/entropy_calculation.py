@@ -27,7 +27,7 @@ def get_occurences_per_value_from_dataset(list_of_values):
 def get_entropy_from_values(list_of_values):
     """
     :param list_of_values:
-    :return:
+    :return: the entropy of the provided list of values
     """
     unique_values_occurences = get_occurences_per_value_from_dataset(list_of_values)
     entropy = ZERO
@@ -45,7 +45,7 @@ def get_classes_for_feature_indices(feature_indices, classification_values):
     """
     :param feature_indices: list of indices of selected features
     :param classification_values: list of ALL class values
-    :return:
+    :return: the classification_values items matching the indices in feature_indices
     """
     list_of_classes = list()
     for index in feature_indices:
@@ -56,7 +56,7 @@ def get_classes_for_feature_indices(feature_indices, classification_values):
 def calculate_gain_of_feature_on_class(features, classes):
     """
     :param features: List of String features to calculate gain of
-    :param classes: List of String classes to classify
+    :param classes: matching List of String classes
     :return: the gain of the feature
     """
     classes_entropy = get_entropy_from_values(classes)
@@ -73,9 +73,9 @@ def calculate_gain_of_feature_on_class(features, classes):
             gain += current_subset_gain
     return gain
 
-# FIXME: your sheets for gain/entropy calculation (lecture and Exercises 3) contain errors. This cost me a lot of time.
-# FIXME: the Exercises sheets list entropy as part of gain as ".0940 - entropy...", while the 0.940 is not part of this calculation here.
-# FIXME: Both math and programming require a literal notation style!
+# stuff to mention during assessment of this assignment:
+# FIXME: your sheets for gain/entropy calculation (lecture sheets and Exercises 3 sheets) contain errors.
+# FIXME: the Exercises sheets list entropy as part of gain as ".0940 - entropy...", while the 0.940 is not a part of this calculation.
 
 """
 GAIN:

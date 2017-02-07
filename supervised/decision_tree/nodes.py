@@ -1,31 +1,25 @@
-from abc import ABC, abstractmethod
 
+class Node:
 
-class Node(ABC):
+    def __init__(self):
+        self._decision_rule = ""
+        self._children = dict()
+        self._class = None
 
-    @abstractmethod
-    def foo(self):
-        pass
+    def get_decision_rule(self):
+        return self._decision_rule
 
+    def set_decision_rule(self, feature):
+        self._decision_rule = feature
 
-class TerminalNode(Node):
+    def get_children(self):
+        return self._children
 
-    def __init__(self, classification):
-        self._classification = classification
+    def add_children(self, name, value):
+        self._children[name] = value
 
-    def get_classification(self):
-        return self._classification
+    def get_class(self):
+        return self._class
 
-    def foo(self):
-        pass
-
-
-
-class RootNode(Node):
-
-    def __init__(self, right_node, left_node):
-        self.left_node = left_node
-        self.right_node = right_node
-
-    def foo(self):
-        pass
+    def set_class(self, value):
+        self._class = value
