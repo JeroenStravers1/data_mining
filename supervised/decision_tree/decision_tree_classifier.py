@@ -17,7 +17,6 @@ class ID3DecisionTree(SupervisedClassifier):
     amount of "unknown" classifications is recorded separately.
     """
     _PURE = 1
-    _CLASS = "class"
     _PREDICTED_CLASS = 0
     _NO_OFFSPRING = 0
     _UNSEEN_COMBINATION = "unknown "

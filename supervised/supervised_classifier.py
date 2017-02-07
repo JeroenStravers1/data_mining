@@ -4,6 +4,8 @@ import pandas as pd
 
 class SupervisedClassifier(ABC):
 
+    _CLASS = "class"
+
     @abstractmethod
     def train(self, trainset):
         pass
