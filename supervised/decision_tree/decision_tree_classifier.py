@@ -175,6 +175,7 @@ class ID3DecisionTree(SupervisedClassifier):
         Display the classification results in the console
         :param test_results: dict containing the results
         """
+        print(self._METHOD + "\n")
         print(self._TOTAL_DATAPOINTS + str(test_results[self._TOTAL_DATAPOINTS]))
         print(self._NUMBER_CLASSIFIED_CORRECTLY + str(test_results[self._NUMBER_CLASSIFIED_CORRECTLY]))
         print(self._NUMBER_CLASSIFIED_INCORRECTLY + str(test_results[self._NUMBER_CLASSIFIED_INCORRECTLY]))
